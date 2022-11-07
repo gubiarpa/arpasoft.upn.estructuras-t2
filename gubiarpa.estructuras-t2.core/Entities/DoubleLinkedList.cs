@@ -38,6 +38,10 @@
             }
         }
 
+        /// <summary>
+        /// Inserta un nodo, según un criterio de ordenación implementado en 'CompareTo'
+        /// </summary>
+        /// <param name="node"></param>
         public void Insert(DoubleLinkedNode<T> node)
         {
             var nodeRun = _initial;
@@ -72,6 +76,20 @@
                     nodeRun.Previous = node;
                 }
             }
+        }
+
+        public int GetLength()
+        {
+            var nodeRun = _initial;
+            int countElements = 0;
+
+            while (nodeRun != null)
+            {
+                countElements++;
+                nodeRun = nodeRun.Next;
+            }
+
+            return countElements;
         }
         #endregion
 

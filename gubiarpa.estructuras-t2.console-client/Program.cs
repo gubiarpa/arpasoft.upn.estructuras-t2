@@ -11,3 +11,5 @@ doubleLinkedList.Insert(new DoubleLinkedNode<string>("Cáncer"));
 doubleLinkedList.Insert(new DoubleLinkedNode<string>("Leo"));
 
 doubleLinkedList.Print();
+
+Console.WriteLine($"Cantidad de Elementos: {doubleLinkedList.GetLength()}");

@@ -1,6 +1,6 @@
 ﻿using gubiarpa.estructuras_t2.console_client.Operations;
-using gubiarpa.estructuras_t2.core.Entities;
 
+#region DataCook
 Console.WriteLine("\n** Pokemon - Lista 1 **");
 var pokemonLinkedList1 = new DoubleLinkedStringList();
 pokemonLinkedList1.Add("Charmander");
@@ -16,6 +16,7 @@ pokemonLinkedList2.Add("Squirtle");
 pokemonLinkedList2.Add("Ivisaur");
 pokemonLinkedList2.Add("Picachu");
 pokemonLinkedList2.Print();
+#endregion
 
 #region Pregunta1
 var matchPercentage = pokemonLinkedList1.Compare(pokemonLinkedList2);

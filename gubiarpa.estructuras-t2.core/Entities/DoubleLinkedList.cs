@@ -24,10 +24,8 @@
         /// Agrega un nodo con la información proveída en el parámetro 'data'
         /// </summary>
         /// <param name="data">Información del Nodo - Genérico</param>
-        public void Add(T data)
+        public void Add(DoubleLinkedNode<T> node)
         {
-            var node = new DoubleLinkedNode<T>(data);
-
             if (_current == null)
             {
                 _initial = _current = node;
@@ -56,7 +54,7 @@
             /// Node Insertion
             if (nodeRun == null)
             {
-                Add(node.Data!);
+                Add(node);
             }
             else
             {

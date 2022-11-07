@@ -8,9 +8,10 @@ namespace gubiarpa.estructuras_t2.console_client.Operations
         {
             var nodeRun = _initial;
 
-            while (nodeRun == null)
+            while (nodeRun != null)
             {
                 Console.WriteLine(nodeRun?.Data);
+                nodeRun = nodeRun?.Next;
             }
         }
     }

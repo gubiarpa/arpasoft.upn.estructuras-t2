@@ -3,13 +3,13 @@
     public class DoubleLinkedNode<T>
     {
         #region Attributes
-        private readonly T? data;
+        private readonly T? _data;
         protected DoubleLinkedNode<T>? _previous;
         protected DoubleLinkedNode<T>? _next;
         #endregion
 
         #region Properties
-        public T? Data => data;
+        public T? Data => _data;
         public DoubleLinkedNode<T>? Previous { get => _previous; set => _previous = value; }
         public DoubleLinkedNode<T>? Next { get => _next; set => _next = value; }
         #endregion
@@ -17,7 +17,7 @@
         #region Constructors
         public DoubleLinkedNode(T data)
         {
-            data = data;
+            _data = data;
             _previous = _next = null;
         }
 

@@ -21,7 +21,7 @@
 
         #region MainMethods
         /// <summary>
-        /// Agrega un nodo con la información proveída en el parámetro 'data'
+        /// Agrega un nodo con la información proveída en el parámetro 'data'.
         /// </summary>
         /// <param name="data">Información del Nodo - Genérico</param>
         public void Add(DoubleLinkedNode<T> node)
@@ -39,7 +39,7 @@
         }
 
         /// <summary>
-        /// Inserta un nodo, según un criterio de ordenación implementado en 'CompareTo'
+        /// Inserta un nodo, según un criterio de ordenación implementado en 'CompareTo'.
         /// </summary>
         /// <param name="node"></param>
         public void Insert(DoubleLinkedNode<T> node)
@@ -79,7 +79,7 @@
         }
 
         /// <summary>
-        /// Obtiene el número de elementos de la lista
+        /// Obtiene el número de elementos de la lista.
         /// </summary>
         /// <returns></returns>
         public int GetLength()
@@ -97,7 +97,7 @@
         }
 
         /// <summary>
-        /// Busca elemento por posición
+        /// Busca elemento por posición.
         /// </summary>
         /// <param name="position">Posición buscada</param>
         /// <returns></returns>
@@ -124,11 +124,88 @@
 
             return nodeFounded;
         }
+
+        /// <summary>
+        /// Mueve la posición entre dos nodos
+        /// </summary>
+        /// <param name="nodePrevious">Nodo anterior</param>
+        /// <param name="nodeExchanged">Nodo de intercambio</param>
+        /// <param name="nodeNext">Nodo siguiente</param>
+        public void Move(DoubleLinkedNode<T> nodePrevious, DoubleLinkedNode<T> nodeExchanged, DoubleLinkedNode<T> nodeNext)
+        {
+            if (nodePrevious != null)
+            {
+                nodePrevious.Next = nodeExchanged;
+            }
+
+            nodeExchanged.Previous = nodePrevious;
+
+            if (nodeNext != null)
+            {
+                nodeNext.Previous = nodeExchanged;
+            }
+
+            nodeExchanged.Next = nodeNext;
+        }
+
+        /// <summary>
+        /// Intercambia dos nodos, según la posición especificada.
+        /// </summary>
+        /// <param name="positionA">Primera posición</param>
+        /// <param name="positionB">Segunda posición</param>
+        public void Exchange(int positionA, int positionB)
+        {
+            DoubleLinkedNode<T> nodeA, nodeB, nodeTemporal;
+
+            int countElements = GetLength();
+
+            if (
+                (positionA >= 1 && positionA <= countElements) &&
+                (positionB >= 1 && positionB <= countElements) &&
+                (positionA < positionB)
+            )
+            {
+                nodeA = SearchByPosition(positionA);
+                nodeB = SearchByPosition(positionB);
+
+                nodeTemporal = new DoubleLinkedNode<T>(nodeA.Previous!, nodeA.Next!);
+
+                Move((positionA == positionB - 1) ? nodeB : nodeB.Previous!, nodeA, nodeB.Next!);
+                Move(nodeTemporal.Previous!, nodeB, (positionA == positionB - 1) ? nodeA : nodeTemporal.Next!);
+
+                if (nodeA == _initial)
+                {
+                    _initial = nodeB;
+                }
+                else if (nodeB == _initial)
+                {
+                    _initial = nodeA;
+                }
+
+                if (nodeA == _current)
+                {
+                    _current = nodeB;
+                }
+                else
+                {
+                    _current = nodeA;
+                }
+            }
+        }
         #endregion
 
         #region Helpers
+        /// <summary>
+        /// Imprime todos los elementos de la lista.
+        /// </summary>
         public abstract void Print();
 
+        /// <summary>
+        /// Compara dos nodos. Si el primero es mayor, 1; si empata, 0; si el segundo es mayor, -1.
+        /// </summary>
+        /// <param name="nodeA">Primer nodo</param>
+        /// <param name="nodeB">Segundo nodo</param>
+        /// <returns></returns>
         protected abstract int CompareTo(DoubleLinkedNode<T> nodeA, DoubleLinkedNode<T> nodeB);
         #endregion
     }

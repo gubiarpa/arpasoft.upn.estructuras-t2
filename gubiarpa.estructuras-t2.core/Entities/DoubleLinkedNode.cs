@@ -21,7 +21,7 @@
             _previous = _next = null;
         }
 
-        public DoubleLinkedNode(T data, DoubleLinkedNode<T> previous, DoubleLinkedNode<T> next) : this(data)
+        public DoubleLinkedNode(DoubleLinkedNode<T> previous, DoubleLinkedNode<T> next)
         {
             Previous = previous;
             Next = next;

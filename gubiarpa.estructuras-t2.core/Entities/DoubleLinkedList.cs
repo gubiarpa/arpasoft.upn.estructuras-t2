@@ -78,6 +78,10 @@
             }
         }
 
+        /// <summary>
+        /// Obtiene el número de elementos de la lista
+        /// </summary>
+        /// <returns></returns>
         public int GetLength()
         {
             var nodeRun = _initial;
@@ -90,6 +94,35 @@
             }
 
             return countElements;
+        }
+
+        /// <summary>
+        /// Busca elemento por posición
+        /// </summary>
+        /// <param name="position">Posición buscada</param>
+        /// <returns></returns>
+        public DoubleLinkedNode<T> SearchByPosition(int position)
+        {
+            DoubleLinkedNode<T> nodeFounded, nodeReference;
+
+            nodeReference = _initial!;
+            nodeFounded = null;
+            int i = 0;
+
+            while (nodeReference != null)
+            {
+                i++;
+
+                if (i == position)
+                {
+                    nodeFounded = nodeReference;
+                    break;
+                }
+
+                nodeReference = nodeReference.Next!;
+            }
+
+            return nodeFounded;
         }
         #endregion
 

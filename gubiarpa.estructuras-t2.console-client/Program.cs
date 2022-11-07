@@ -1,23 +1,23 @@
 ﻿using gubiarpa.estructuras_t2.console_client.Operations;
 using gubiarpa.estructuras_t2.core.Entities;
 
-var doubleLinkedList = new DoubleLinkedStringList();
+Console.WriteLine("\n** Pokemon - Lista 1 **");
+var pokemonLinkedList1 = new DoubleLinkedStringList();
+pokemonLinkedList1.Add(new DoubleLinkedNode<string>("Charmander"));
+pokemonLinkedList1.Add(new DoubleLinkedNode<string>("Squirtle"));
+pokemonLinkedList1.Add(new DoubleLinkedNode<string>("Bulbasaur"));
+pokemonLinkedList1.Add(new DoubleLinkedNode<string>("Picachu"));
+pokemonLinkedList1.Print();
 
-Console.WriteLine("** Adding **");
-doubleLinkedList.Add(new DoubleLinkedNode<string>("Aries"));
-doubleLinkedList.Add(new DoubleLinkedNode<string>("Tauro"));
-doubleLinkedList.Add(new DoubleLinkedNode<string>("Géminis"));
-doubleLinkedList.Insert(new DoubleLinkedNode<string>("Cáncer"));
-doubleLinkedList.Insert(new DoubleLinkedNode<string>("Leo"));
-doubleLinkedList.Print();
+Console.WriteLine("\n** Pokemon - Lista 2 **");
+var pokemonLinkedList2 = new DoubleLinkedStringList();
+pokemonLinkedList2.Add(new DoubleLinkedNode<string>("Butterfly"));
+pokemonLinkedList2.Add(new DoubleLinkedNode<string>("Squirtle"));
+pokemonLinkedList2.Add(new DoubleLinkedNode<string>("Ivisaur"));
+pokemonLinkedList2.Add(new DoubleLinkedNode<string>("Picachu"));
+pokemonLinkedList2.Print();
 
-Console.WriteLine();
-Console.WriteLine("** Position **");
-var position = 3;
-var nodeFounded = doubleLinkedList.SearchByPosition(position);
-Console.WriteLine($"Position: {position} => {nodeFounded.Data}");
-
-Console.WriteLine();
-Console.WriteLine("** Exchange (2, 5) **");
-doubleLinkedList.Exchange(2, 5);
-doubleLinkedList.Print();
+#region Pregunta1
+var matchPercentage = pokemonLinkedList1.Compare(pokemonLinkedList2);
+Console.WriteLine($"\n>> % Coincidencia: {(matchPercentage * 100)}%");
+#endregion

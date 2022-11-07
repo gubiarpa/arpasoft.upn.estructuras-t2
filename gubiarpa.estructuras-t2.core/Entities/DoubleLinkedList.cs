@@ -5,6 +5,12 @@
         #region Attributes
         protected DoubleLinkedNode<T>? _initial;
         protected DoubleLinkedNode<T>? _current;
+
+        #endregion
+
+        #region Properties
+        public DoubleLinkedNode<T>? Initial { get => _initial; }
+
         #endregion
 
         #region Constructor
@@ -16,6 +22,35 @@
         public DoubleLinkedList(T data)
         {
             _initial = _current = new DoubleLinkedNode<T>(data);
+        }
+        #endregion
+
+        #region Evaluation-T2
+        public double Compare(DoubleLinkedList<T> anotherDoubleLinkedList)
+        {
+            /// 1. Validamos que ambas listas tengan la misma longitud
+            var length1 = GetLength();
+            var length2 = anotherDoubleLinkedList.GetLength();
+            if (length1 != length2)
+                return 0; // Ninguna coincidencia
+
+            /// 2. Recorremos todos los nodos
+            DoubleLinkedNode<T>? nodeRunA = _initial;
+            DoubleLinkedNode<T>? nodeRunB = anotherDoubleLinkedList.Initial!;
+            double matchFactor = 0; // % de coincidencia
+
+            while (nodeRunA != null)
+            {
+                if (Equals(nodeRunA, nodeRunB))
+                {
+                    matchFactor++;
+                }
+
+                nodeRunA = nodeRunA?.Next;
+                nodeRunB = nodeRunB?.Next;
+            }
+
+            return matchFactor / length1;
         }
         #endregion
 
@@ -44,7 +79,7 @@
         /// <param name="node"></param>
         public void Insert(DoubleLinkedNode<T> node)
         {
-            var nodeRun = _initial;
+            var nodeRun = Initial;
 
             /// Find insertion position
             while (nodeRun != null)
@@ -126,33 +161,10 @@
         }
 
         /// <summary>
-        /// Mueve la posición entre dos nodos
-        /// </summary>
-        /// <param name="nodePrevious">Nodo anterior</param>
-        /// <param name="nodeExchanged">Nodo de intercambio</param>
-        /// <param name="nodeNext">Nodo siguiente</param>
-        public void Move(DoubleLinkedNode<T> nodePrevious, DoubleLinkedNode<T> nodeExchanged, DoubleLinkedNode<T> nodeNext)
-        {
-            if (nodePrevious != null)
-            {
-                nodePrevious.Next = nodeExchanged;
-            }
-
-            nodeExchanged.Previous = nodePrevious;
-
-            if (nodeNext != null)
-            {
-                nodeNext.Previous = nodeExchanged;
-            }
-
-            nodeExchanged.Next = nodeNext;
-        }
-
-        /// <summary>
         /// Intercambia dos nodos, según la posición especificada.
         /// </summary>
-        /// <param name="positionA">Primera posición</param>
-        /// <param name="positionB">Segunda posición</param>
+        /// <param name="positionA">Posición 1</param>
+        /// <param name="positionB">Posición 2</param>
         public void Exchange(int positionA, int positionB)
         {
             DoubleLinkedNode<T> nodeA, nodeB, nodeTemporal;
@@ -173,11 +185,11 @@
                 Move((positionA == positionB - 1) ? nodeB : nodeB.Previous!, nodeA, nodeB.Next!);
                 Move(nodeTemporal.Previous!, nodeB, (positionA == positionB - 1) ? nodeA : nodeTemporal.Next!);
 
-                if (nodeA == _initial)
+                if (nodeA == Initial)
                 {
                     _initial = nodeB;
                 }
-                else if (nodeB == _initial)
+                else if (nodeB == Initial)
                 {
                     _initial = nodeA;
                 }
@@ -194,7 +206,32 @@
         }
         #endregion
 
-        #region Helpers
+        #region Utils
+        /// <summary>
+        /// Mueve la posición entre dos nodos
+        /// </summary>
+        /// <param name="nodePrevious">Nodo anterior</param>
+        /// <param name="nodeExchanged">Nodo de intercambio</param>
+        /// <param name="nodeNext">Nodo siguiente</param>
+        protected void Move(DoubleLinkedNode<T> nodePrevious, DoubleLinkedNode<T> nodeExchanged, DoubleLinkedNode<T> nodeNext)
+        {
+            if (nodePrevious != null)
+            {
+                nodePrevious.Next = nodeExchanged;
+            }
+
+            nodeExchanged.Previous = nodePrevious;
+
+            if (nodeNext != null)
+            {
+                nodeNext.Previous = nodeExchanged;
+            }
+
+            nodeExchanged.Next = nodeNext;
+        }
+        #endregion
+
+        #region Abstract
         /// <summary>
         /// Imprime todos los elementos de la lista.
         /// </summary>
@@ -207,6 +244,14 @@
         /// <param name="nodeB">Segundo nodo</param>
         /// <returns></returns>
         protected abstract int CompareTo(DoubleLinkedNode<T> nodeA, DoubleLinkedNode<T> nodeB);
+
+        /// <summary>
+        /// Compara el valor de dos nodos, devolviendo true/false si son valores iguales.
+        /// </summary>
+        /// <param name="nodeA">Nodo 1</param>
+        /// <param name="nodeB">Nodo 2</param>
+        /// <returns></returns>
+        protected abstract bool Equals(DoubleLinkedNode<T>? nodeA, DoubleLinkedNode<T>? nodeB);
         #endregion
     }
 }

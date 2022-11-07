@@ -6,7 +6,7 @@ namespace gubiarpa.estructuras_t2.console_client.Operations
     {
         public override void Print()
         {
-            var nodeRun = _initial;
+            var nodeRun = Initial;
 
             while (nodeRun != null)
             {
@@ -18,6 +18,17 @@ namespace gubiarpa.estructuras_t2.console_client.Operations
         protected override int CompareTo(DoubleLinkedNode<string> nodeA, DoubleLinkedNode<string> nodeB)
         {
             return string.Compare(nodeA?.Data, nodeB?.Data);
+        }
+
+        protected override bool Equals(DoubleLinkedNode<string>? nodeA, DoubleLinkedNode<string>? nodeB)
+        {
+            if (nodeA == null || nodeB == null)
+                return false;
+
+            if (nodeA.Data == null || nodeB.Data == null)
+                return false;
+
+            return nodeA.Data.Equals(nodeB.Data);
         }
     }
 }

@@ -5,12 +5,10 @@
         #region Attributes
         protected DoubleLinkedNode<T>? _initial;
         protected DoubleLinkedNode<T>? _current;
-
         #endregion
 
         #region Properties
         public DoubleLinkedNode<T>? Initial { get => _initial; }
-
         #endregion
 
         #region Constructor
@@ -71,6 +69,15 @@
                 _current.Next = node;
                 _current = node;
             }
+        }
+
+        /// <summary>
+        /// Agrega un nodo, pero solamente con la información (data).
+        /// </summary>
+        /// <param name="data"></param>
+        public void Add(T data)
+        {
+            Add(new DoubleLinkedNode<T>(data));
         }
 
         /// <summary>

@@ -14,5 +14,10 @@ namespace gubiarpa.estructuras_t2.console_client.Operations
                 nodeRun = nodeRun?.Next;
             }
         }
+
+        protected override int CompareTo(DoubleLinkedNode<string> nodeA, DoubleLinkedNode<string> nodeB)
+        {
+            return string.Compare(nodeA?.Data, nodeB?.Data);
+        }
     }
 }

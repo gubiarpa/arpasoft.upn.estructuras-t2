@@ -39,10 +39,48 @@
                 _current = node;
             }
         }
+
+        public void Insert(DoubleLinkedNode<T> node)
+        {
+            var nodeRun = _initial;
+
+            /// Find insertion position
+            while (nodeRun != null)
+            {
+                if (CompareTo(node, nodeRun) < 0)
+                    break;
+
+                nodeRun = nodeRun.Next;
+            }
+
+            /// Node Insertion
+            if (nodeRun == null)
+            {
+                Add(node.Data!);
+            }
+            else
+            {
+                if (nodeRun.Previous == null)
+                {
+                    _initial = node;
+                    node.Next = nodeRun;
+                    nodeRun.Previous = node;
+                }
+                else
+                {
+                    nodeRun.Previous.Next = node;
+                    node.Previous = nodeRun.Previous;
+                    node.Next = nodeRun;
+                    nodeRun.Previous = node;
+                }
+            }
+        }
         #endregion
 
         #region Helpers
         public abstract void Print();
+
+        protected abstract int CompareTo(DoubleLinkedNode<T> nodeA, DoubleLinkedNode<T> nodeB);
         #endregion
     }
 }

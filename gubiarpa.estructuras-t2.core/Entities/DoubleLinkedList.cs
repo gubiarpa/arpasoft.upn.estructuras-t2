@@ -50,6 +50,28 @@
 
             return matchFactor / length1;
         }
+
+        public void SelectionSort()
+        {
+            var listLength = GetLength();
+
+            for (int i = 1; i <= listLength - 1; i++)
+            {
+                int minimum = i;
+
+                for (int j = i + 1; j <= listLength; j++)
+                {
+                    var nodeA = SearchByPosition(j);
+                    var nodeB = SearchByPosition(minimum);
+
+                    if (CompareTo(nodeA, nodeB) < 0)
+                    {
+                        minimum = j;
+                    }
+                }
+                Exchange(i, minimum);
+            }
+        }
         #endregion
 
         #region MainMethods

@@ -5,7 +5,11 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{F5EFDD96-008C-43FF-B89E-33F93B6C4A06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gubiarpa.estructuras-t2.core", "gubiarpa.estructuras-t2.core\gubiarpa.estructuras-t2.core.csproj", "{66BEBE29-77DD-4141-850E-FC5DEF4B3584}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gubiarpa.estructuras-t2.core", "gubiarpa.estructuras-t2.core\gubiarpa.estructuras-t2.core.csproj", "{66BEBE29-77DD-4141-850E-FC5DEF4B3584}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{3C4CC3EE-9A61-41C6-BFA7-23A19F95EF65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gubiarpa.estructuras-t2.console-client", "gubiarpa.estructuras-t2.console-client\gubiarpa.estructuras-t2.console-client.csproj", "{A6EED2BF-3C5E-4B13-8922-D6253A78E52F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +21,17 @@ Global
 		{66BEBE29-77DD-4141-850E-FC5DEF4B3584}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66BEBE29-77DD-4141-850E-FC5DEF4B3584}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66BEBE29-77DD-4141-850E-FC5DEF4B3584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6EED2BF-3C5E-4B13-8922-D6253A78E52F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6EED2BF-3C5E-4B13-8922-D6253A78E52F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6EED2BF-3C5E-4B13-8922-D6253A78E52F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6EED2BF-3C5E-4B13-8922-D6253A78E52F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{66BEBE29-77DD-4141-850E-FC5DEF4B3584} = {F5EFDD96-008C-43FF-B89E-33F93B6C4A06}
+		{A6EED2BF-3C5E-4B13-8922-D6253A78E52F} = {3C4CC3EE-9A61-41C6-BFA7-23A19F95EF65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {554E6AAE-27DE-45A0-89B2-362CE8FC0915}

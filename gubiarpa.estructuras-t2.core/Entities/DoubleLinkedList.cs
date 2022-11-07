@@ -3,8 +3,8 @@
     public abstract class DoubleLinkedList<T>
     {
         #region Attributes
-        private DoubleLinkedNode<T>? _initial;
-        private DoubleLinkedNode<T>? _current;
+        protected DoubleLinkedNode<T>? _initial;
+        protected DoubleLinkedNode<T>? _current;
         #endregion
 
         #region Constructor

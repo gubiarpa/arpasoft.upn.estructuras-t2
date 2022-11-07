@@ -3,21 +3,27 @@
     public class DoubleLinkedNode<T>
     {
         #region Attributes
-        private readonly T? _element;
+        private readonly T? _data;
         private DoubleLinkedNode<T>? _previous;
-        public DoubleLinkedNode<T>? _next;
+        private DoubleLinkedNode<T>? _next;
+        #endregion
+
+        #region Properties
+        public DoubleLinkedNode<T>? Previous { get => _previous; set => _previous = value; }
+        public DoubleLinkedNode<T>? Next { get => _next; set => _next = value; }
         #endregion
 
         #region Constructors
-        public DoubleLinkedNode(T element)
+        public DoubleLinkedNode(T data)
         {
-            _element = element;
+            _data = data;
+            _previous = _next = null;
         }
 
-        public DoubleLinkedNode(T element, DoubleLinkedNode<T> previous, DoubleLinkedNode<T> next) : this(element)
+        public DoubleLinkedNode(T data, DoubleLinkedNode<T> previous, DoubleLinkedNode<T> next) : this(data)
         {
-            _previous = previous;
-            _next = next;
+            Previous = previous;
+            Next = next;
         }
         #endregion
     }

@@ -3,7 +3,7 @@
     public class DoubleLinkedNode<T>
     {
         #region Attributes
-        private T? _element;
+        private readonly T? _element;
         private DoubleLinkedNode<T>? _previous;
         public DoubleLinkedNode<T>? _next;
         #endregion
